@@ -1,0 +1,24 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+}
+
+.card {
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(44,83,100,0.12);
+}
+
+.form-label, .form-control {
+  color: #203A43;
+}
+
+.btn-primary {
+  background: #203A43;
+  border-color: #203A43;
+  color: #fff;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: #2C5364;
+  border-color: #2C5364;
+}

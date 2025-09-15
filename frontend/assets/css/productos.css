@@ -1,0 +1,167 @@
+.btn-texto {
+  background: none !important;
+  border: none !important;
+  color: #2C5364 !important;
+  font-weight: 500;
+  box-shadow: none;
+  transition: color 0.2s, transform 0.2s;
+  border-radius: 8px;
+}
+.btn-texto.btn-danger {
+  color: #dc3545 !important;
+}
+.btn-texto.btn-secondary {
+  color: #203A43 !important;
+}
+.btn-texto:hover, .btn-texto:focus {
+  color: #0F2027 !important;
+  background: none !important;
+  transform: scale(1.12);
+  text-decoration: underline;
+}
+body {
+  background: #f5f6fa;
+}
+
+.main-content, .container-fluid {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(44,83,100,0.08);
+  padding: 32px 24px;
+}
+
+.card.producto-animada {
+  background: #fff;
+  color: #222;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,83,100,0.10);
+  border: 2px solid #eee;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card.producto-animada.border-success {
+  border-color: #28a745!important;
+}
+.card.producto-animada.border-danger {
+  border-color: #dc3545!important;
+}
+.card.producto-animada:hover {
+  box-shadow: 0 8px 32px rgba(44,83,100,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.btn-animado {
+  transition: background 0.2s, transform 0.2s;
+  border-radius: 8px;
+}
+.btn-animado:hover {
+  transform: scale(1.08);
+}
+
+.btn-primary {
+  background: #2C5364;
+  border-color: #2C5364;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background: #203A43;
+    border-color: #203A43;
+    color: #b3d4fc;
+}
+.btn-danger {
+  background: #dc3545;
+  border-color: #dc3545;
+}
+.btn-secondary {
+  background: #203A43;
+  border-color: #203A43;
+}
+
+.list-group-item {
+  background: transparent;
+  color: #222;
+  border: none;
+  padding: 0.35rem 0.75rem;
+}
+
+/* Modal moderno */
+/* Modal con paleta suave */
+.modal-content {
+  background: #203A43;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(44,83,100,0.10);
+}
+.modal-header {
+  background: #203A43;
+  color: #fff;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 2px solid #2C5364;
+}
+/* Letras negras y campos con color sidebar */
+.modal-body label, .modal-body .form-label {
+  color: #b3d4fc;
+}
+.modal-body input, .modal-body textarea, .modal-body .input-group-text {
+  background: #203A43;
+  color: #fff;
+  border: 1px solid #b3d4fc;
+  border-radius: 8px;
+}
+.modal-body input:focus, .modal-body textarea:focus {
+  background: #203A43;
+  color: #fff;
+  border: 1px solid #2C5364;
+  box-shadow: 0 0 0 2px #b3d4fc;
+}
+
+.navbar {
+  background: #203A43!important;
+  color: #fff;
+  border-radius: 0 16px 16px 0;
+}
+.navbar .nav-link, .navbar-brand {
+  color: #fff!important;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar .nav-link.active {
+  background: rgba(255,255,255,0.18);
+  color: #fff!important;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.18);
+  color: #b3d4fc!important;
+  border-radius: 8px;
+}
+
+.sidebar {
+  background: #203A43;
+  color: #fff;
+  border-radius: 0 16px 16px 0;
+}
+/* Animación para tarjetas */
+.card.producto-animada {
+  animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card.producto-animada:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para botones */
+.btn-animado {
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-animado:hover {
+  transform: scale(1.08);
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+  color: #fff;
+}

@@ -1,0 +1,71 @@
+/* Sidebar oscuro estilo sistema */
+.navbar {
+  background: #203A43 !important;
+  color: #fff;
+  border-radius: 0 16px 16px 0;
+}
+@media (max-width: 991px) {
+  .sidebar-productos {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 1rem;
+  }
+}
+main {
+  padding-top: 24px;
+  min-width: 0;
+  transition: margin-left 0.3s;
+}
+@media (min-width: 992px) {
+  main {
+    padding-left: 240px;
+  }
+}
+@media (max-width: 991px) {
+  main {
+    padding-left: 0;
+    padding-top: 8px;
+  }
+}
+.container-fluid {
+  max-width: 1000px;
+  min-width: 0;
+  overflow-x: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.sidebar-custom .nav-link:last-child {
+  background: #203A43 !important;
+  color: #fff !important;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+.card-header.rounded-top {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.card {
+  /* Estructura original, sin ancho máximo ni overflow */
+}
+
+.card-body canvas {
+  /* Estructura original, sin reglas de responsividad extra */
+}
+
+main {
+  margin-left: 240px;
+  padding-top: 24px;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0;
+  }
+}

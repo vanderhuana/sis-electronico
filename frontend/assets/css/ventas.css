@@ -1,0 +1,31 @@
+@import url('productos.css');
+
+/* Personalización para ventas */
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+#formVenta .form-label {
+  font-weight: 500;
+  color: #203A43;
+}
+#formVenta .form-control, #formVenta .form-select {
+  border-radius: 0.5rem;
+}
+#btnAgregarProducto {
+  border-radius: 0.5rem;
+}
+#tablaVentas table {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+#tablaVentas th {
+  background: #203A43;
+  color: #fff;
+}
+#tablaVentas td {
+  background: #f8f9fa;
+}
+.toast {
+  font-size: 1rem;
+}

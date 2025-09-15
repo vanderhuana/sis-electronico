@@ -1,0 +1,127 @@
+.navbar {
+  background: #203A43 !important;
+  color: #fff;
+  border-radius: 0 16px 16px 0;
+}
+.navbar .nav-link, .navbar-brand {
+  color: #fff !important;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar .nav-link.active {
+  background: rgba(255,255,255,0.18);
+  color: #e0e8d5 !important;
+  border-radius: 8px;
+}
+main {
+  padding-top: 24px;
+  min-width: 0;
+  transition: margin-left 0.3s;
+}
+@media (min-width: 992px) {
+  main {
+    padding-left: 220px;
+  }
+}
+@media (max-width: 991px) {
+  main {
+    padding-left: 0;
+    padding-top: 8px;
+  }
+}
+.container-fluid {
+  max-width: 900px;
+  min-width: 0;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+@import url('productos.css');
+
+/* Tarjetas con paleta de colores del sistema */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(20,83,45,0.18);
+  border: 2px solid #198754;
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+  color: #fff;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Botones estilo verde oscuro */
+.btn-primary, .btn-success, .btn-info {
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  border-color: #203A43 !important;
+  color: #e0e8d5 !important;
+  font-weight: 600;
+}
+.btn-primary:hover, .btn-success:hover, .btn-info:hover {
+  background: #203A43 !important;
+  border-color: #2C5364 !important;
+  color: #fff !important;
+}
+
+/* Letras claras en formularios y tablas */
+.form-label, .form-control, .input-group-text {
+  color: #e0e8d5 !important;
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  border: 1px solid #e0e8d5 !important;
+}
+.form-control:focus {
+  background: #14532d !important;
+  color: #fff !important;
+  border: 1px solid #198754 !important;
+  box-shadow: 0 0 0 2px #e0e8d5;
+}
+
+/* Tablas con fondo verde oscuro y letras claras */
+table {
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  color: #fff !important;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #198754 !important;
+}
+th {
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  color: #fff !important;
+  font-weight: 600;
+  border: 1px solid #14532d !important;
+}
+tr:nth-child(even) {
+  background: #184c2b !important;
+}
+tr:nth-child(odd) {
+  background: #14532d !important;
+}
+td {
+  color: #222 !important;
+  border: 1px solid #198754 !important;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #b3d4fc;
+}
+.card.border-primary {
+  border-color: #203A43 !important;
+}
+.card.border-success {
+  border-color: #203A43 !important;
+}
+.card.border-warning {
+  border-color: #ffc107 !important;
+}
+.card.border-info {
+  border-color: #203A43 !important;
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(44,83,100,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+#toastContainer .toast {
+  font-size: 1rem;
+}
+#tablaReporteVentas th, #tablaReporteProductos th, #tablaReporteClientes th {
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+  color: #fff;
+}

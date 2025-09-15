@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Clientes | SIS Electrónico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/clientes.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-column vh-100" style="width:220px;position:fixed;">
+    <a class="navbar-brand mx-2" href="#">SIS Electrónico</a>
+    <ul class="navbar-nav flex-column mt-4">
+  <li class="nav-item"><a class="nav-link" href="dashboard.html">Panel de Control</a></li>
+  <li class="nav-item"><a class="nav-link" href="productos.html">Inventario</a></li>
+  <li class="nav-item"><a class="nav-link active" href="clientes.html">Clientes</a></li>
+  <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
+  <li class="nav-item"><a class="nav-link" href="reportes.html">Reportes</a></li>
+  <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+  <li class="nav-item"><a class="nav-link" href="#">Consulta Rápida</a></li>
+  <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+    </ul>
+     <!-- Consulta Rápida -->
+     <div class="p-3">
+       <form id="formConsultaRapidaClientes" class="mb-2">
+         <input type="text" class="form-control mb-2" name="query" placeholder="Consulta rápida..." required>
+         <select class="form-select mb-2" name="tipo">
+           <option value="cliente">Cliente</option>
+           <option value="producto">Producto</option>
+         </select>
+         <button type="submit" class="btn btn-info w-100">Buscar</button>
+       </form>
+       <div id="resultadoConsultaRapidaClientes"></div>
+     </div>
+  </nav>
+  <main class="pt-4" style="margin-left:220px;">
+    <div class="container-fluid">
+      <h2 class="mb-4">Gestión de Clientes</h2>
+      <div class="row g-4">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h4 class="mb-0">Lista de Clientes</h4>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCliente">Agregar cliente</button>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row" id="cardsClientes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal para agregar cliente -->
+      <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="modalClienteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content rounded-4 shadow-lg border-0">
+            <div class="modal-header text-white rounded-top-4">
+              <h5 class="modal-title fw-bold" id="modalClienteLabel">
+                <i class="bi bi-person-badge me-2"></i> Cliente
+              </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+              <form id="formCliente">
+                <input type="hidden" name="id_cliente" value="">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Nombre</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
+                      <input type="text" name="nombre" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                      <input type="email" name="email" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Teléfono</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                      <input type="text" name="telefono" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label">Dirección</label>
+                    <textarea name="direccion" class="form-control" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="mt-4 d-flex justify-content-end gap-2">
+                  <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary px-4 fw-bold">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/clientes.js"></script>
+</body>
+</html>
