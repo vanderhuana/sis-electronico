@@ -10,6 +10,7 @@ import productRoutes from './routes/products.js';
 import clientRoutes from './routes/clients.js';
 import clientQuickRoutes from './routes/clientQuick.js';
 import reportRoutes from './routes/reports.js';
+import consultaRoutes from './routes/consulta.js';
 import dashboardRoutes from './routes/dashboard.js';
 import salesRoutes from './routes/sales.js';
 
@@ -27,6 +28,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/clients', clientRoutes);
 app.use('/api/clients', clientQuickRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/consulta', consultaRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/sales', salesRoutes);
 
