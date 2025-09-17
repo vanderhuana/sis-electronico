@@ -9,15 +9,14 @@ export const consultaRapida = async (req, res) => {
   try {
     const clientesPromise = pool.query(
       `SELECT c.id, c.nombre, c.correo, c.telefono,
-         ARRAY(
-           SELECT p.nombre FROM detalle_ventas dv
-           JOIN productos p ON p.id = dv.producto_id
-           WHERE dv.cliente_id = c.id
-           LIMIT 5
-         ) AS productos_comprados
-       FROM clientes c
-       WHERE LOWER(c.nombre) LIKE LOWER($1) OR LOWER(c.correo) LIKE LOWER($1) OR CAST(c.id AS TEXT) = $2
-       ORDER BY c.nombre LIMIT 15`,
+        COALESCE(array_agg(DISTINCT p.nombre) FILTER (WHERE p.nombre IS NOT NULL), '{}') AS productos_comprados
+      FROM clientes c
+      LEFT JOIN ventas v ON v.cliente_id = c.id
+      LEFT JOIN detalle_ventas dv ON dv.venta_id = v.id
+      LEFT JOIN productos p ON p.id = dv.producto_id
+      WHERE LOWER(c.nombre) LIKE LOWER($1) OR LOWER(c.correo) LIKE LOWER($1) OR CAST(c.id AS TEXT) = $2
+      GROUP BY c.id
+      ORDER BY c.nombre LIMIT 15`,
       [`%${q}%`, q]
     );
     const productosPromise = pool.query(
