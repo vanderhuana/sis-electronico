@@ -5,7 +5,6 @@ dotenv.config();
 
 import { pool } from './models/db.js';
 import authRoutes from './routes/auth.js';
-import userRoutes from './routes/users.js';
 import productRoutes from './routes/products.js';
 import clientRoutes from './routes/clients.js';
 import clientQuickRoutes from './routes/clientQuick.js';
@@ -23,7 +22,6 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/clients', clientRoutes);
 app.use('/api/clients', clientQuickRoutes);

@@ -3,30 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | SIS Electrónico</title>
+  <title>Dashboard | ElectroTech</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 <body>
   <!-- Sidebar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-column vh-100" style="width:220px;position:fixed;">
-    <a class="navbar-brand mx-2" href="#">SIS Electrónico</a>
-    <ul class="navbar-nav flex-column mt-2">
-      <li class="nav-item"><a class="nav-link" href="dashboard.html">Panel de Control</a></li>
-      <li class="nav-item"><a class="nav-link" href="productos.html">Inventario</a></li>
-      <li class="nav-item"><a class="nav-link" href="clientes.html">Clientes</a></li>
-      <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
-      <li class="nav-item"><a class="nav-link" href="reportes.html">Reportes</a></li>
-      <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
-      <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
-    </ul>
-  </nav>
-  <!-- Main -->
-  <main class="ms-5 ps-5 pt-4">
-  <div class="container-fluid px-3 px-md-4">
+  <div id="sidebar-container"></div>
+  
+  <!-- Main Content -->
+  <main style="margin-left: 240px; padding: 20px;">
+    <div class="container-fluid">
       <h2 class="mb-4 text-primary fw-bold">Panel de Control</h2>
-      <div class="row g-4 flex-wrap">
-        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+      
+      <!-- Statistics Cards -->
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card shadow-sm border-primary rounded-4">
             <div class="card-body">
               <h5 class="card-title text-primary">Ventas del Mes</h5>
@@ -34,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card shadow-sm border-success rounded-4">
             <div class="card-body">
               <h5 class="card-title text-success">Ingresos del Día</h5>
@@ -42,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card shadow-sm border-warning rounded-4">
             <div class="card-body">
               <h5 class="card-title text-warning">Stock Bajo</h5>
@@ -50,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card shadow-sm border-info rounded-4">
             <div class="card-body">
               <h5 class="card-title text-info">Clientes Registrados</h5>
@@ -59,29 +52,40 @@
           </div>
         </div>
       </div>
-      </div>
-      <div class="row mt-3 g-4 justify-content-center">
-  <div class="col-md-4">
+      
+      <!-- Charts -->
+      <div class="row mt-4 g-4 justify-content-center">
+        <div class="col-md-6">
           <div class="card shadow-sm border-primary rounded-4">
-            <div class="card-header bg-primary text-white rounded-top">Ingresos últimos 12 meses</div>
+            <div class="card-header bg-primary text-white rounded-top">
+              <h6 class="mb-0">Ingresos últimos 12 meses</h6>
+            </div>
             <div class="card-body">
               <canvas id="chartIngresos"></canvas>
             </div>
           </div>
         </div>
-  <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card shadow-sm border-success rounded-4">
-            <div class="card-header bg-success text-white rounded-top">Top 5 productos más vendidos</div>
+            <div class="card-header bg-success text-white rounded-top">
+              <h6 class="mb-0">Top 5 productos más vendidos</h6>
+            </div>
             <div class="card-body">
               <canvas id="chartTopProductos"></canvas>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- Toast Container -->
       <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
     </div>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/dashboard.js"></script>
+  <script src="../assets/js/auth.js"></script>
 </body>
+</html>
 </html>

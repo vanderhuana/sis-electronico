@@ -3,125 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventario | SIS Electrónico</title>
+  <title>Inventario | ElectroTech</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/productos.css">
 </head>
-  <body>
+<body>
   <!-- Sidebar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-column vh-100" style="width:220px;position:fixed;">
-    <a class="navbar-brand mx-2" href="#">SIS Electrónico</a>
-    <ul class="navbar-nav flex-column mt-4">
-  <li class="nav-item"><a class="nav-link" href="dashboard.html">Panel de Control</a></li>
-  <li class="nav-item"><a class="nav-link active" href="productos.html">Inventario</a></li>
-  <li class="nav-item"><a class="nav-link" href="clientes.html">Clientes</a></li>
-  <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
-  <li class="nav-item"><a class="nav-link" href="reportes.html">Reportes</a></li>
-  <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
-  <li class="nav-item"><a class="nav-link" href="consulta.html">Consulta Rápida</a></li>
-  <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
-    </ul>
-     <!-- Consulta Rápida -->
-  </nav>
-  <main class="pt-4" style="margin-left:220px;">
+  <div id="sidebar-container"></div>
+  
+  <!-- Main Content -->
+  <main style="margin-left: 240px; padding: 20px;">
     <div class="container-fluid">
-      <h2 class="mb-4">Gestion de Inventarios</h2>
-      <div class="row g-4">
-        <div class="col-lg-12">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <h4 class="mb-0">Productos Disponibles</h4>
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalProducto">Agregar producto</button>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row" id="cardsProductos"></div>
-            </div>
-          </div>
+      <h2 class="mb-4 text-primary fw-bold">Gestión de Inventario</h2>
+      <!-- Botón Agregar Producto -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProducto">
+          <i class="fas fa-plus"></i> Agregar Producto
+        </button>
+        <div class="input-group" style="max-width: 300px;">
+          <input type="text" class="form-control" id="buscarProducto" placeholder="Buscar producto...">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </div>
-      <!-- Modal para agregar producto -->
-      <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content rounded-4 shadow-lg border-0">
-            <div class="modal-header text-white rounded-top-4">
-              <h5 class="modal-title fw-bold" id="modalProductoLabel">
-                <i class="bi bi-box-seam me-2"></i> Producto
-              </h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-              <form id="formProducto">
-                <input type="hidden" name="codigo_sku" value="">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label">Nombre</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-tag"></i></span>
-                      <input type="text" name="nombre" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Categoría</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-list"></i></span>
-                      <input type="text" name="categoria" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label">Descripción</label>
-                    <textarea name="descripcion" class="form-control" rows="2"></textarea>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Precio Compra</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-                      <input type="number" name="precio_compra" class="form-control" min="0" step="0.01">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Precio Venta</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-                      <input type="number" name="precio_venta" class="form-control" min="0.01" step="0.01" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Stock</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-archive"></i></span>
-                      <input type="number" name="stock" class="form-control" min="0" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Proveedor</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-truck"></i></span>
-                      <input type="text" name="proveedor" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Imagen</label>
-                    <input type="file" name="imagen_file" class="form-control" accept="image/*">
-                    <input type="hidden" name="imagen_url" class="form-control">
-                  </div>
-                  <div class="col-md-6 d-flex align-items-end">
-                    <img id="previewImagen" src="" alt="" style="max-width:120px;max-height:120px;display:none;margin-top:5px;border-radius:8px;box-shadow:0 0 8px #ccc;">
-                  </div>
-                </div>
-                <div class="mt-4 d-flex justify-content-end gap-2">
-                  <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="submit" class="btn btn-primary px-4 fw-bold">Guardar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+      
+      <!-- Lista de Productos -->
+      <div class="row" id="cardsProductos">
+        <!-- Los productos se cargarán aquí dinámicamente -->
       </div>
-      </div>
-      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
     </div>
   </main>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
+  <!-- Modal para Agregar/Editar Producto -->
+  <div class="modal fade" id="modalProducto" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalProductoTitulo">Agregar Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formProducto" enctype="multipart/form-data">
+            <input type="hidden" name="codigo_sku" id="codigo_sku">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre del Producto</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="categoria" class="form-label">Categoría</label>
+                  <input type="text" class="form-control" id="categoria" name="categoria">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="precio_compra" class="form-label">Precio de Compra</label>
+                  <input type="number" class="form-control" id="precio_compra" name="precio_compra" step="0.01">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="precio_venta" class="form-label">Precio de Venta</label>
+                  <input type="number" class="form-control" id="precio_venta" name="precio_venta" step="0.01" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="stock" class="form-label">Stock</label>
+                  <input type="number" class="form-control" id="stock" name="stock" value="0">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="proveedor" class="form-label">Proveedor</label>
+                  <input type="text" class="form-control" id="proveedor" name="proveedor">
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="imagen_file" class="form-label">Imagen del Producto</label>
+              <input type="file" class="form-control" id="imagen_file" name="imagen_file" accept="image/*">
+              <input type="hidden" name="imagen_url">
+              <div class="mt-2">
+                <img id="previewImagen" src="" alt="" style="max-width: 150px; max-height: 150px; display: none; border-radius: 8px;">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="formProducto">Guardar Producto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/productos.js"></script>
+  <script src="../assets/js/auth.js"></script>
 </body>
 </html>

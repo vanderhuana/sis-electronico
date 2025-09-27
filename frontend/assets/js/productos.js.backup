@@ -386,8 +386,3 @@ function mostrarToast(msg, tipo = 'info') {
   toastContainer.appendChild(toast);
   setTimeout(() => toast.remove(), 4000);
 }
-
-// Evento de carga de página
-document.addEventListener('DOMContentLoaded', function() {
-  mostrarToast('Módulo de Inventario cargado correctamente', 'success');
-});

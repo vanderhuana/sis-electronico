@@ -1,17 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Clientes | SIS Electrónico</title>
+    <title>Clientes | ElectroTech</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/clientes.css">
 </head>
 <body>
   <!-- Sidebar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-column vh-100" style="width:220px;position:fixed;">
-    <a class="navbar-brand mx-2" href="#">SIS Electrónico</a>
+  <div id="sidebar-container"></div>
+  
+  <!-- Main Content -->
+  <main style="margin-left: 240px; padding: 20px;">
+    <div class="container-fluid">
+      <h2 class="mb-4 text-primary fw-bold">Gestión de Clientes</h2>
+      <!-- Botón Agregar Cliente -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCliente">
+          <i class="fas fa-user-plus"></i> Agregar Cliente
+        </button>
+        <div class="input-group" style="max-width: 300px;">
+          <input type="text" class="form-control" id="buscarCliente" placeholder="Buscar cliente...">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Lista de Clientes -->
+      <div class="row" id="cardsClientes">
+        <!-- Los clientes se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal para Agregar/Editar Cliente -->
+  <div class="modal fade" id="modalCliente" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalClienteTitulo">Agregar Cliente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formCliente">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" name="telefono">
+            </div>
+            <div class="mb-3">
+              <label for="direccion" class="form-label">Dirección</label>
+              <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="formCliente">Guardar Cliente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/clientes.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>
     <ul class="navbar-nav flex-column mt-4">
   <li class="nav-item"><a class="nav-link" href="dashboard.html">Panel de Control</a></li>
   <li class="nav-item"><a class="nav-link" href="productos.html">Inventario</a></li>
@@ -91,10 +160,15 @@
           </div>
         </div>
       </div>
-      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
     </div>
   </main>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/clientes.js"></script>
+  <script src="../assets/js/auth.js"></script>
 </body>
 </html>

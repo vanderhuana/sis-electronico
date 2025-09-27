@@ -1,0 +1,15 @@
+# Archivos y directorios a ignorar en Docker build
+node_modules
+npm-debug.log
+.env.local
+.env.development
+.env.test
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+coverage
+.nyc_output
+.cache
+*.log

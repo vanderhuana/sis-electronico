@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Mostrar mensaje de carga exitosa
+  mostrarToast('Módulo de Clientes cargado correctamente', 'success');
+
   cargarClientes();
 
   // Limpiar formulario al abrir modal de agregar cliente

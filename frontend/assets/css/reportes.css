@@ -1,3 +1,4 @@
+/* Estilos para Reportes con paleta Dashboard */
 .navbar {
   background: #203A43 !important;
   color: #fff;
@@ -9,23 +10,20 @@
 }
 .navbar .nav-link.active {
   background: rgba(255,255,255,0.18);
-  color: #e0e8d5 !important;
+  color: #fff !important;
   border-radius: 8px;
 }
 main {
   padding-top: 24px;
   min-width: 0;
   transition: margin-left 0.3s;
+  margin-left: 240px;
 }
-@media (min-width: 992px) {
+@media (max-width: 768px) {
   main {
-    padding-left: 220px;
-  }
-}
-@media (max-width: 991px) {
-  main {
-    padding-left: 0;
-    padding-top: 8px;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 .container-fluid {
@@ -35,73 +33,115 @@ main {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-@import url('productos.css');
 
-/* Tarjetas con paleta de colores del sistema */
+/* Tarjetas con paleta dashboard */
 .card {
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(20,83,45,0.18);
-  border: 2px solid #198754;
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
-  color: #fff;
+  box-shadow: 0 4px 20px rgba(32, 58, 67, 0.1);
+  border: 2px solid #203A43;
+  background: #fff;
+  color: #333;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
-/* Botones estilo verde oscuro */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(32, 58, 67, 0.15);
+}
+
+/* Botones con paleta dashboard */
 .btn-primary, .btn-success, .btn-info {
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  background: linear-gradient(135deg, #203A43, #2C5364) !important;
   border-color: #203A43 !important;
-  color: #e0e8d5 !important;
+  color: #fff !important;
   font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
 }
 .btn-primary:hover, .btn-success:hover, .btn-info:hover {
-  background: #203A43 !important;
+  background: linear-gradient(135deg, #2C5364, #203A43) !important;
   border-color: #2C5364 !important;
   color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(32, 58, 67, 0.3);
 }
 
-/* Letras claras en formularios y tablas */
-.form-label, .form-control, .input-group-text {
-  color: #e0e8d5 !important;
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
-  border: 1px solid #e0e8d5 !important;
+/* Forms con paleta dashboard */
+.form-label {
+  color: #203A43 !important;
+  font-weight: 500;
+}
+.form-control, .input-group-text {
+  border: 2px solid #e9ecef !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.form-control {
+  background: #fff !important;
+  color: #333 !important;
+}
+.input-group-text {
+  background: #203A43 !important;
+  color: #fff !important;
 }
 .form-control:focus {
-  background: #14532d !important;
-  color: #fff !important;
-  border: 1px solid #198754 !important;
-  box-shadow: 0 0 0 2px #e0e8d5;
+  background: #fff !important;
+  color: #333 !important;
+  border: 2px solid #203A43 !important;
+  box-shadow: 0 0 0 0.2rem rgba(32, 58, 67, 0.25);
 }
 
-/* Tablas con fondo verde oscuro y letras claras */
+/* Tablas con paleta dashboard */
 table {
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #333 !important;
   border-radius: 12px;
   overflow: hidden;
-  border: 2px solid #198754 !important;
+  border: 2px solid #203A43 !important;
+  box-shadow: 0 4px 15px rgba(32, 58, 67, 0.1);
 }
 th {
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364) !important;
+  background: linear-gradient(135deg, #203A43, #2C5364) !important;
   color: #fff !important;
   font-weight: 600;
-  border: 1px solid #14532d !important;
+  border: none !important;
+  padding: 12px;
+  text-align: center;
 }
 tr:nth-child(even) {
-  background: #184c2b !important;
+  background: #f8f9fa !important;
 }
 tr:nth-child(odd) {
-  background: #14532d !important;
+  background: #fff !important;
+}
+tr:hover {
+  background: rgba(32, 58, 67, 0.05) !important;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
 }
 td {
-  color: #222 !important;
-  border: 1px solid #198754 !important;
+  color: #333 !important;
+  border: 1px solid #e9ecef !important;
+  padding: 10px;
+  text-align: center;
 }
 
+/* Card titles y headers */
 .card-title {
   font-weight: 600;
-  color: #b3d4fc;
+  color: #203A43;
+  margin-bottom: 1rem;
 }
+
+.card-header {
+  background: linear-gradient(135deg, #203A43, #2C5364) !important;
+  color: #fff !important;
+  border-bottom: none;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+/* Borders personalizados */
 .card.border-primary {
   border-color: #203A43 !important;
 }
@@ -114,14 +154,55 @@ td {
 .card.border-info {
   border-color: #203A43 !important;
 }
+
+/* Hover effects */
 .card:hover {
-  box-shadow: 0 8px 32px rgba(44,83,100,0.18);
-  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(32, 58, 67, 0.15);
+  transform: translateY(-2px);
 }
+
+/* Toast notifications */
 #toastContainer .toast {
   font-size: 1rem;
+  border: 2px solid #203A43;
 }
+
+/* Tablas específicas de reportes */
 #tablaReporteVentas th, #tablaReporteProductos th, #tablaReporteClientes th {
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+  background: linear-gradient(135deg, #203A43, #2C5364);
   color: #fff;
+  border: none;
+}
+
+/* Títulos y texto principal */
+h2, h3, h4, h5 {
+  color: #203A43;
+}
+
+/* Alertas con paleta dashboard */
+.alert-success {
+  background: rgba(32, 58, 67, 0.1);
+  border-color: #203A43;
+  color: #203A43;
+}
+
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.alert-warning {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: #ffc107;
+  color: #856404;
+}
+
+/* Badges con paleta dashboard */
+.badge-primary {
+  background: #203A43 !important;
+}
+
+.badge-success {
+  background: linear-gradient(135deg, #203A43, #2C5364) !important;
 }

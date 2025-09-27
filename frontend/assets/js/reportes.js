@@ -1,6 +1,9 @@
 // JS base para reportes
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Mostrar mensaje de carga exitosa
+  mostrarToast('Módulo de Reportes cargado correctamente', 'success');
+  
   // Exportar PDF/Excel ventas por rango
   document.getElementById('btnExportarVentasPDF')?.addEventListener('click', () => {
     const desde = document.querySelector('[name="fecha_inicio"]').value;

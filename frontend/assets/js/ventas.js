@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'login.html';
     return;
   }
+  
+  // Mostrar mensaje de carga exitosa
+  mostrarToast('Módulo de Ventas cargado correctamente', 'success');
+  
   cargarClientes();
   cargarProductos().then(() => {
     inicializarFormularioVenta();
