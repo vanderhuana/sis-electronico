@@ -390,4 +390,122 @@ function mostrarToast(msg, tipo = 'info') {
 // Evento de carga de página
 document.addEventListener('DOMContentLoaded', function() {
   mostrarToast('Módulo de Inventario cargado correctamente', 'success');
+  
+  // Inicializar búsqueda de productos
+  initBusquedaProductos();
 });
+
+// Variables para almacenar productos y estado de búsqueda
+let productosOriginales = [];
+let timeoutBusqueda = null;
+
+// Función para inicializar la búsqueda
+function initBusquedaProductos() {
+  const inputBuscar = document.getElementById('buscarProducto');
+  if (!inputBuscar) {
+    console.log('❌ No se encontró el input buscarProducto');
+    return;
+  }
+  
+  console.log('✅ Input de búsqueda de productos encontrado');
+  
+  inputBuscar.addEventListener('input', function() {
+    clearTimeout(timeoutBusqueda);
+    const query = this.value.trim().toLowerCase();
+    console.log('🔍 Búsqueda productos:', query);
+    
+    // Debounce para evitar búsquedas excesivas
+    timeoutBusqueda = setTimeout(() => {
+      filtrarProductos(query);
+    }, 300);
+  });
+  
+  // Limpiar búsqueda con Escape
+  inputBuscar.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      this.value = '';
+      mostrarTodosProductos();
+    }
+  });
+}
+
+// Función para filtrar productos en tiempo real
+function filtrarProductos(query) {
+  const productCards = document.querySelectorAll('#cardsProductos .col-12');
+  let productosEncontrados = 0;
+  
+  console.log('🔍 Filtrando productos. Query:', query, 'Cards encontradas:', productCards.length);
+  
+  if (query === '') {
+    mostrarTodosProductos();
+    return;
+  }
+  
+  productCards.forEach(card => {
+    const cardContent = card.textContent.toLowerCase();
+    const esVisible = cardContent.includes(query);
+    
+    if (esVisible) {
+      card.style.display = 'block';
+      card.style.animation = 'fadeIn 0.3s ease';
+      productosEncontrados++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  
+  console.log('📊 Productos encontrados:', productosEncontrados);
+  
+  // Mostrar mensaje si no hay resultados
+  mostrarResultadosBusqueda(productosEncontrados, query);
+}
+
+// Función para mostrar todos los productos
+function mostrarTodosProductos() {
+  const productCards = document.querySelectorAll('#cardsProductos .col-12');
+  productCards.forEach(card => {
+    card.style.display = 'block';
+    card.style.animation = 'fadeIn 0.3s ease';
+  });
+  
+  // Remover mensaje de búsqueda si existe
+  const mensajeBusqueda = document.getElementById('mensajeBusqueda');
+  if (mensajeBusqueda) {
+    mensajeBusqueda.remove();
+  }
+}
+
+// Función para mostrar resultados de búsqueda
+function mostrarResultadosBusqueda(cantidad, query) {
+  // Remover mensaje anterior si existe
+  const mensajeAnterior = document.getElementById('mensajeBusqueda');
+  if (mensajeAnterior) {
+    mensajeAnterior.remove();
+  }
+  
+  // Crear nuevo mensaje
+  const productCards = document.getElementById('cardsProductos');
+  const mensaje = document.createElement('div');
+  mensaje.id = 'mensajeBusqueda';
+  mensaje.className = 'col-12 mb-3';
+  
+  if (cantidad === 0) {
+    mensaje.innerHTML = `
+      <div class="alert alert-warning text-center">
+        <i class="fas fa-search me-2"></i>
+        <strong>Sin resultados</strong><br>
+        No se encontraron productos que coincidan con "<strong>${query}</strong>"
+        <br><small class="text-muted">Intenta con otro término de búsqueda</small>
+      </div>
+    `;
+  } else {
+    mensaje.innerHTML = `
+      <div class="alert alert-info text-center">
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>${cantidad} producto(s) encontrado(s)</strong> para "<strong>${query}</strong>"
+      </div>
+    `;
+  }
+  
+  productCards.insertBefore(mensaje, productCards.firstChild);
+}

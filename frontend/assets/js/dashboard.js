@@ -40,13 +40,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Gráfico top productos
     const ctxTop = document.getElementById('chartTopProductos').getContext('2d');
     new Chart(ctxTop, {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.top_productos.map(p => p.nombre),
         datasets: [{
           label: 'Vendidos',
           data: data.top_productos.map(p => p.cantidad_vendida),
-          backgroundColor: '#198754'
+          backgroundColor: [
+            '#0d6efd', // azul
+            '#198754', // verde
+            '#ffc107', // amarillo
+            '#dc3545', // rojo
+            '#6f42c1'  // morado
+          ]
         }]
       }
     });

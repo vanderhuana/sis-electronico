@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mostrar mensaje de carga exitosa
   mostrarToast('Módulo de Clientes cargado correctamente', 'success');
+  
+  // Inicializar búsqueda de clientes
+  initBusquedaClientes();
 
   cargarClientes();
 
@@ -204,4 +207,128 @@ function limpiarErroresFormulario(form) {
   Array.from(form.querySelectorAll('.is-invalid')).forEach(e => e.classList.remove('is-invalid'));
 }
 
-// Puedes agregar funciones similares a las de productos.js para la gestión visual y funcional de clientes
+// Variables para búsqueda de clientes
+let timeoutBusquedaClientes = null;
+
+// Función para inicializar la búsqueda de clientes
+function initBusquedaClientes() {
+  const inputBuscar = document.getElementById('buscarCliente');
+  if (!inputBuscar) {
+    console.log('❌ No se encontró el input buscarCliente');
+    return;
+  }
+  
+  console.log('✅ Input de búsqueda de clientes encontrado');
+  
+  inputBuscar.addEventListener('input', function() {
+    clearTimeout(timeoutBusquedaClientes);
+    const query = this.value.trim().toLowerCase();
+    console.log('🔍 Búsqueda clientes:', query);
+    
+    // Debounce para evitar búsquedas excesivas
+    timeoutBusquedaClientes = setTimeout(() => {
+      filtrarClientes(query);
+    }, 300);
+  });
+  
+  // Limpiar búsqueda con Escape
+  inputBuscar.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      this.value = '';
+      mostrarTodosClientes();
+    }
+  });
+}
+
+// Función para filtrar clientes en tiempo real
+function filtrarClientes(query) {
+  const clientCards = document.querySelectorAll('#cardsClientes .col-12');
+  let clientesEncontrados = 0;
+  
+  console.log('🔍 Filtrando clientes. Query:', query, 'Cards encontradas:', clientCards.length);
+  
+  if (query === '') {
+    mostrarTodosClientes();
+    return;
+  }
+  
+  clientCards.forEach(card => {
+    const cardContent = card.textContent.toLowerCase();
+    const esVisible = cardContent.includes(query);
+    
+    if (esVisible) {
+      card.style.display = 'block';
+      card.style.animation = 'fadeIn 0.3s ease';
+      clientesEncontrados++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  
+  console.log('📊 Clientes encontrados:', clientesEncontrados);
+  
+  // Mostrar mensaje si no hay resultados
+  mostrarResultadosBusquedaClientes(clientesEncontrados, query);
+}
+
+// Función para mostrar todos los clientes
+function mostrarTodosClientes() {
+  const clientCards = document.querySelectorAll('#cardsClientes .col-12');
+  clientCards.forEach(card => {
+    card.style.display = 'block';
+    card.style.animation = 'fadeIn 0.3s ease';
+  });
+  
+  // Remover mensaje de búsqueda si existe
+  const mensajeBusqueda = document.getElementById('mensajeBusquedaClientes');
+  if (mensajeBusqueda) {
+    mensajeBusqueda.remove();
+  }
+}
+
+// Función para mostrar resultados de búsqueda de clientes
+function mostrarResultadosBusquedaClientes(cantidad, query) {
+  // Remover mensaje anterior si existe
+  const mensajeAnterior = document.getElementById('mensajeBusquedaClientes');
+  if (mensajeAnterior) {
+    mensajeAnterior.remove();
+  }
+  
+  // Crear nuevo mensaje
+  const clientCards = document.getElementById('cardsClientes');
+  const mensaje = document.createElement('div');
+  mensaje.id = 'mensajeBusquedaClientes';
+  mensaje.className = 'col-12 mb-3';
+  
+  if (cantidad === 0) {
+    mensaje.innerHTML = `
+      <div class="alert alert-warning text-center">
+        <i class="fas fa-search me-2"></i>
+        <strong>Sin resultados</strong><br>
+        No se encontraron clientes que coincidan con "<strong>${query}</strong>"
+        <br><small class="text-muted">Intenta con otro término de búsqueda</small>
+      </div>
+    `;
+  } else {
+    mensaje.innerHTML = `
+      <div class="alert alert-info text-center">
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>${cantidad} cliente(s) encontrado(s)</strong> para "<strong>${query}</strong>"
+      </div>
+    `;
+  }
+  
+  clientCards.insertBefore(mensaje, clientCards.firstChild);
+}
+
+// Función de toast para clientes
+function mostrarToast(msg, tipo = 'info') {
+  const toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) return;
+  const toast = document.createElement('div');
+  toast.className = `toast align-items-center text-bg-${tipo} border-0 show mb-2`;
+  toast.role = 'alert';
+  toast.innerHTML = `<div class='d-flex'><div class='toast-body'>${msg}</div><button type='button' class='btn-close btn-close-white me-2 m-auto' data-bs-dismiss='toast'></button></div>`;
+  toastContainer.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}

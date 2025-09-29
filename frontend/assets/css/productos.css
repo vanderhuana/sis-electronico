@@ -165,3 +165,53 @@ body {
   background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
   color: #fff;
 }
+
+/* Estilos para búsqueda de productos */
+#buscarProducto {
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+#buscarProducto:focus {
+  border-color: #203A43;
+  box-shadow: 0 0 0 0.2rem rgba(32, 58, 67, 0.25);
+}
+
+/* Animaciones para resultados de búsqueda */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(32, 58, 67, 0.15);
+}
+
+/* Mensaje de búsqueda */
+#mensajeBusqueda .alert {
+  border: none;
+  border-left: 4px solid;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease;
+}
+
+#mensajeBusqueda .alert-warning {
+  border-left-color: #ffc107;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
+}
+
+#mensajeBusqueda .alert-info {
+  border-left-color: #203A43;
+  background: linear-gradient(135deg, rgba(32, 58, 67, 0.1), rgba(32, 58, 67, 0.05));
+}

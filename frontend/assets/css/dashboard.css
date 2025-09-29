@@ -55,8 +55,13 @@ main {
   /* Estructura original, sin ancho máximo ni overflow */
 }
 
+
 .card-body canvas {
-  /* Estructura original, sin reglas de responsividad extra */
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 320px !important;
+  display: block;
+  margin: 0 auto;
 }
 
 main {

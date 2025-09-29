@@ -8,6 +8,28 @@ body {
   box-shadow: 0 2px 16px rgba(44,83,100,0.12);
 }
 
+/* Logo con rayito */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.lightning-bolt {
+  display: inline-block;
+  animation: spark 2s ease-in-out infinite;
+}
+
+@keyframes spark {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
 .form-label, .form-control {
   color: #203A43;
 }
