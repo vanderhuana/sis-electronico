@@ -1,0 +1,116 @@
+/* Footer elegante y profesional - Al final de la página */
+.footer-electrotech {
+  background: #203A43;
+  color: #ffffff;
+  padding: 25px 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  z-index: 10;
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(45deg, #0d6efd, #4dabf7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e9ecef;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.footer-year {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.footer-dev {
+  color: #4dabf7;
+  font-weight: 600;
+}
+
+/* Efectos hover */
+.footer-electrotech:hover .footer-brand {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.footer-electrotech:hover {
+  background: #2c4a5a;
+  transition: background 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-electrotech {
+    padding: 15px 0;
+    margin-top: 30px;
+  }
+  
+  .footer-content {
+    padding: 0 15px;
+  }
+  
+  .footer-brand {
+    font-size: 1.1rem;
+  }
+  
+  .footer-text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* Ajustes para páginas con sidebar */
+@media (min-width: 769px) {
+  main[style*="margin-left"] {
+    padding-bottom: 30px;
+  }
+}
+
+/* Toast Container - posición normal */
+.toast-container,
+#toastContainer {
+  bottom: 20px !important;
+  z-index: 1050;
+}
+
+/* Estructura de página con footer al final */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 20px;
+}

@@ -1,16 +1,17 @@
-<!D  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes | ElectroTech</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">PE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes | ElectroTech</title>
+  <title>Clientes | ElectroTech</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/electrotech-theme.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/clientes.css">
+  <link rel="stylesheet" href="../assets/css/clientes-enhanced.css">
+  <link rel="stylesheet" href="../assets/css/inputs-fix.css">
 </head>
 <body>
   <!-- Sidebar -->
@@ -19,17 +20,35 @@
   <!-- Main Content -->
   <main style="margin-left: 240px; padding: 20px;">
     <div class="container-fluid">
-      <h2 class="mb-4 text-primary fw-bold">Gestión de Clientes</h2>
-      <!-- Botón Agregar Cliente -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCliente">
-          <i class="fas fa-user-plus"></i> Agregar Cliente
-        </button>
-        <div class="input-group" style="max-width: 300px;">
-          <input type="text" class="form-control" id="buscarCliente" placeholder="Buscar cliente...">
-          <button class="btn btn-outline-secondary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
+      <h2 class="mb-4 text-success fw-bold animate-fade-in-up">Gestión de Clientes</h2>
+      
+      <!-- Sección Principal -->
+      <div class="row g-4 justify-content-center mb-5">
+        <div class="col-12 col-lg-8 d-flex flex-column align-items-center">
+          <div class="text-center mb-4">
+            <div class="d-inline-block p-3 rounded-circle mb-2" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); box-shadow: 0 8px 25px rgba(25, 135, 84, 0.3);">
+              <i class="fas fa-users fa-lg text-white"></i>
+            </div>
+            <h5 class="text-success mb-1">Gestión de Clientes</h5>
+            <p class="text-muted mb-3 fs-6">Administra tu base de clientes de manera eficiente</p>
+            <button class="btn btn-success btn-electrotech animate-fade-in-up px-5 py-3 fs-5 shadow-lg btn-main-cliente btn-gradient" 
+                    data-bs-toggle="modal" data-bs-target="#modalCliente"
+                    style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none; border-radius: 15px; box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4); transition: all 0.3s ease;">
+              <i class="fas fa-user-plus me-2 pulse-icon"></i>Nuevo Cliente
+            </button>
+          </div>
+          
+          <!-- Buscador mejorado -->
+          <div class="w-100" style="max-width: 500px;">
+            <div class="input-group shadow-lg">
+              <span class="input-group-text" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%); border: none;">
+                <i class="fas fa-search text-white"></i>
+              </span>
+              <input type="text" class="form-control input-electrotech" id="buscarCliente" 
+                     placeholder="Buscar clientes por nombre, email o teléfono..." 
+                     style="border-left: none; font-size: 16px; padding: 12px;">
+            </div>
+          </div>
         </div>
       </div>
       
@@ -42,133 +61,131 @@
 
   <!-- Modal para Agregar/Editar Cliente -->
   <div class="modal fade" id="modalCliente" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalClienteTitulo">Agregar Cliente</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content modal-electrotech border-0" style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(32, 58, 67, 0.3);">
+        <div class="modal-header" style="background: linear-gradient(135deg, #203A43 0%, #2C5364 50%, #0F2027 100%); padding: 25px; border: none;">
+          <div class="d-flex align-items-center">
+            <div class="rounded-circle p-2 me-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+              <i class="fas fa-user-plus fa-lg text-white"></i>
+            </div>
+            <div>
+              <h4 class="modal-title fw-bold text-white mb-0" id="modalClienteTitulo">Agregar Nuevo Cliente</h4>
+              <small class="text-white-50">Complete la información del cliente</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
-          <form id="formCliente">
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" required>
+        <div class="modal-body p-0" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+          <!-- Sección Información Personal -->
+          <div class="p-4 modal-section" style="background: white; margin: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+            <h6 class="text-primary mb-3 fw-bold">
+              <i class="fas fa-user-circle me-2 pulse-icon"></i>Información Personal
+            </h6>
+            <form id="formCliente">
+              <div class="row g-3">
+                <div class="col-md-12">
+                  <label for="nombre" class="form-label fw-bold text-dark">Nombre Completo <span class="text-danger">*</span></label>
+                  <div class="input-group shadow-sm">
+                    <span class="input-group-text" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none;">
+                      <i class="fas fa-user text-white"></i>
+                    </span>
+                    <input type="text" class="form-control input-electrotech" id="nombre" name="nombre" required 
+                           placeholder="Ingrese el nombre completo del cliente" style="border-left: none;">
+                  </div>
+                  <div class="form-text">
+                    <i class="fas fa-info-circle me-1"></i>Nombre y apellidos del cliente
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+          <!-- Sección Información de Contacto -->
+          <div class="p-4 mx-4 mb-3 modal-section" style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+            <h6 class="text-primary mb-3 fw-bold">
+              <i class="fas fa-address-book me-2 pulse-icon"></i>Información de Contacto
+            </h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="email" class="form-label fw-bold text-dark">Correo Electrónico</label>
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); border: none;">
+                    <i class="fas fa-envelope text-white"></i>
+                  </span>
+                  <input type="email" class="form-control input-electrotech" id="email" name="email" 
+                         placeholder="cliente@email.com" style="border-left: none;">
+                </div>
+                <div class="form-text">
+                  <i class="fas fa-at me-1"></i>Email de contacto del cliente
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="telefono" class="form-label fw-bold text-dark">Teléfono</label>
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text" style="background: linear-gradient(135deg, #198754 0%, #157347 100%); border: none;">
+                    <i class="fas fa-phone text-white"></i>
+                  </span>
+                  <input type="tel" class="form-control input-electrotech" id="telefono" name="telefono" 
+                         placeholder="+1 234 567 8900" style="border-left: none;">
+                </div>
+                <div class="form-text">
+                  <i class="fas fa-mobile-alt me-1"></i>Número de contacto
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="email" name="email">
+          </div>
+
+          <!-- Sección Dirección -->
+          <div class="p-4 mx-4 mb-3 modal-section" style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+            <h6 class="text-primary mb-3 fw-bold">
+              <i class="fas fa-map-marker-alt me-2 pulse-icon"></i>Dirección
+            </h6>
+            <div class="row g-3">
+              <div class="col-md-12">
+                <label for="direccion" class="form-label fw-bold text-dark">Dirección Completa</label>
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text" style="background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); border: none;">
+                    <i class="fas fa-home text-white"></i>
+                  </span>
+                  <textarea class="form-control input-electrotech" id="direccion" name="direccion" rows="3" 
+                            placeholder="Calle, número, ciudad, código postal..." style="border-left: none;"></textarea>
+                </div>
+                <div class="form-text">
+                  <i class="fas fa-location-arrow me-1"></i>Dirección completa para entregas
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" name="telefono">
+          </div>
+          
+          <!-- Botones de Acción -->
+          <div class="p-4" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 0 0 20px 20px;">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="text-muted small">
+                <i class="fas fa-shield-alt me-1"></i>Información segura y protegida
+              </div>
+              <div class="d-flex gap-3">
+                <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal"
+                        style="border-radius: 12px; border: 2px solid #6c757d; font-weight: 500;">
+                  <i class="fas fa-times me-2"></i>Cancelar
+                </button>
+                <button type="submit" id="btnGuardarCliente" class="btn px-5 py-2 fw-bold text-white shadow-lg"
+                        style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none; border-radius: 12px; box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4); transition: all 0.3s ease;">
+                  <i class="fas fa-save me-2"></i>Guardar Cliente
+                </button>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="direccion" class="form-label">Dirección</label>
-              <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary" form="formCliente">Guardar Cliente</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Toast Container -->
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/sidebar.js"></script>
-  <script src="../assets/js/clientes.js"></script>
-  <script src="../assets/js/auth.js"></script>
-</body>
-</html>
-    <ul class="navbar-nav flex-column mt-4">
-  <li class="nav-item"><a class="nav-link" href="dashboard.html">Panel de Control</a></li>
-  <li class="nav-item"><a class="nav-link" href="productos.html">Inventario</a></li>
-  <li class="nav-item"><a class="nav-link active" href="clientes.html">Clientes</a></li>
-  <li class="nav-item"><a class="nav-link" href="ventas.html">Ventas</a></li>
-  <li class="nav-item"><a class="nav-link" href="reportes.html">Reportes</a></li>
-  <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
-  <li class="nav-item"><a class="nav-link" href="#">Consulta Rápida</a></li>
-  <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
-    </ul>
-     <!-- Consulta Rápida -->
-  </nav>
-  <main class="pt-4" style="margin-left:220px;">
-    <div class="container-fluid">
-      <h2 class="mb-4">Gestión de Clientes</h2>
-      <div class="row g-4">
-        <div class="col-lg-12">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <h4 class="mb-0">Lista de Clientes</h4>
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCliente">Agregar cliente</button>
-          </div>
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row" id="cardsClientes"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Modal para agregar cliente -->
-      <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="modalClienteLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content rounded-4 shadow-lg border-0">
-            <div class="modal-header text-white rounded-top-4">
-              <h5 class="modal-title fw-bold" id="modalClienteLabel">
-                <i class="bi bi-person-badge me-2"></i> Cliente
-              </h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-              <form id="formCliente">
-                <input type="hidden" name="id_cliente" value="">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label">Nombre</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-person"></i></span>
-                      <input type="text" name="nombre" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Email</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                      <input type="email" name="email" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Teléfono</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                      <input type="text" name="telefono" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label">Dirección</label>
-                    <textarea name="direccion" class="form-control" rows="2"></textarea>
-                  </div>
-                </div>
-                <div class="mt-4 d-flex justify-content-end gap-2">
-                  <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="submit" class="btn btn-primary px-4 fw-bold">Guardar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
     </div>
   </main>
 
-  <!-- Toast Container -->
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebar.js"></script>

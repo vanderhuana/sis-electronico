@@ -7,14 +7,15 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/electrotech-theme.css">
   <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body>
   <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow" style="min-width:350px;">
+    <div class="card card-electrotech p-4 shadow-lg animate-fade-in-up" style="min-width:400px;">
       <div class="text-center mb-4">
         <div class="logo-container mb-2">
-          <div class="lightning-bolt">
+          <div class="lightning-bolt animate-pulse">
             <i class="fas fa-bolt fa-3x" style="color: #007bff;"></i>
           </div>
         </div>
@@ -24,19 +25,28 @@
       <form id="loginForm">
         <div class="mb-3">
           <label for="usuario" class="form-label">Usuario</label>
-          <input type="text" class="form-control" id="usuario" required>
+          <input type="text" class="form-control input-electrotech" id="usuario" required>
         </div>
         <div class="mb-3">
           <label for="contrasena" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contrasena" required>
+          <input type="password" class="form-control input-electrotech" id="contrasena" required>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-primary btn-electrotech w-100">
+          <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+        </button>
       </form>
       <div id="loginError" class="text-danger mt-2" style="display:none;"></div>
     </div>
   </div>
   <!-- Toast Container -->
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
   <script src="../assets/js/login.js"></script>
 </body>
 </html>

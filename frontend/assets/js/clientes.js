@@ -7,15 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Mostrar mensaje de carga exitosa
+  // Mostrar mensaje de carga exitosa con animación
   mostrarToast('Módulo de Clientes cargado correctamente', 'success');
   
   // Inicializar búsqueda de clientes
   initBusquedaClientes();
 
+  // Efectos de entrada para elementos de la página
+  initAnimacionesEntrada();
+
   cargarClientes();
 
-  // Limpiar formulario al abrir modal de agregar cliente
+  // Limpiar formulario al abrir modal de agregar cliente con efectos
   const btnAgregar = document.querySelector('[data-bs-target="#modalCliente"]');
   if (btnAgregar) {
     btnAgregar.addEventListener('click', () => {
@@ -23,7 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
       if (formCliente) {
         formCliente.reset();
         formCliente.removeAttribute('data-id');
-          limpiarErroresFormulario(formCliente);
+        limpiarErroresFormulario(formCliente);
+        
+        // Efecto de entrada del modal
+        setTimeout(() => {
+          const modal = document.getElementById('modalCliente');
+          modal.classList.add('modal-enhanced');
+          
+          // Inicializar validación en tiempo real
+          initValidacionTiempoReal();
+          
+          // Animación de entrada de campos
+          const campos = modal.querySelectorAll('.form-control, .form-select');
+          campos.forEach((campo, index) => {
+            campo.style.opacity = '0';
+            campo.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              campo.style.transition = 'all 0.3s ease';
+              campo.style.opacity = '1';
+              campo.style.transform = 'translateY(0)';
+            }, index * 50);
+          });
+        }, 100);
       }
     });
   }
@@ -74,6 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
         method = 'PUT';
       }
       try {
+        // Mostrar efectos de carga - buscar botón por ID primero
+        const btnGuardar = document.getElementById('btnGuardarCliente') || 
+                          e.target.querySelector('[type="submit"]') ||
+                          document.querySelector('#formCliente [type="submit"]');
+        
+        console.log('Botón guardar encontrado:', !!btnGuardar); // Debug
+        
+        if (btnGuardar) {
+          mostrarCargandoBtn(btnGuardar, id ? 'Actualizando...' : 'Guardando...');
+        } else {
+          console.error('No se encontró el botón guardar en clientes');
+        }
+        
         const res = await fetch(url, {
           method,
           headers: {
@@ -83,19 +120,34 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify(datos)
         });
         const data = await res.json();
+        
+        // Restaurar botón
+        if (btnGuardar) {
+          ocultarCargandoBtn(btnGuardar);
+        }
+        
         if (res.ok) {
-          mostrarToast(id ? 'Cliente actualizado' : 'Cliente creado', 'success');
+          mostrarToast(id ? 'Cliente actualizado exitosamente' : 'Cliente creado exitosamente', 'success');
           cargarClientes();
           formCliente.reset();
           formCliente.removeAttribute('data-id');
-            limpiarErroresFormulario(formCliente);
-          // Cerrar el modal
+          limpiarErroresFormulario(formCliente);
+          
+          // Cerrar el modal con efecto
           const modal = bootstrap.Modal.getInstance(document.getElementById('modalCliente'));
+          const modalElement = document.getElementById('modalCliente');
+          modalElement.style.transition = 'all 0.3s ease';
           modal?.hide();
         } else {
           mostrarToast(data.error || 'Error al guardar cliente', 'danger');
         }
       } catch {
+        // Restaurar botón en caso de error
+        const btnGuardar = document.getElementById('btnGuardarCliente') || 
+                          e.target.querySelector('[type="submit"]');
+        if (btnGuardar) {
+          ocultarCargandoBtn(btnGuardar);
+        }
         mostrarToast('Error de conexión', 'danger');
       }
     });
@@ -331,4 +383,141 @@ function mostrarToast(msg, tipo = 'info') {
   toast.innerHTML = `<div class='d-flex'><div class='toast-body'>${msg}</div><button type='button' class='btn-close btn-close-white me-2 m-auto' data-bs-dismiss='toast'></button></div>`;
   toastContainer.appendChild(toast);
   setTimeout(() => toast.remove(), 4000);
+}
+
+// Función para debug del formulario de clientes - llamar desde consola: debugFormularioClientes()
+function debugFormularioClientes() {
+  console.log('=== DEBUG FORMULARIO CLIENTES ===');
+  const formCliente = document.getElementById('formCliente');
+  const btnGuardarId = document.getElementById('btnGuardarCliente');
+  const btnGuardarType = document.querySelector('button[type="submit"]');
+  const btnGuardarForm = formCliente ? formCliente.querySelector('button[type="submit"]') : null;
+  const modal = document.getElementById('modalCliente');
+  
+  console.log('Formulario encontrado:', !!formCliente);
+  console.log('Botón por ID encontrado:', !!btnGuardarId);
+  console.log('Botón por type encontrado:', !!btnGuardarType);
+  console.log('Botón dentro del form encontrado:', !!btnGuardarForm);
+  console.log('Modal encontrado:', !!modal);
+  
+  if (formCliente) {
+    console.log('ID del formulario:', formCliente.id);
+    console.log('Formulario válido:', formCliente.checkValidity());
+    console.log('Elementos del formulario:', formCliente.elements.length);
+    
+    // Verificar campos requeridos
+    const camposRequeridos = formCliente.querySelectorAll('[required]');
+    console.log('Campos requeridos:', camposRequeridos.length);
+    camposRequeridos.forEach((campo, index) => {
+      console.log(`Campo ${index + 1}:`, {
+        name: campo.name,
+        type: campo.type,
+        value: campo.value,
+        valid: campo.checkValidity(),
+        required: campo.required
+      });
+    });
+    
+    // Verificar si el botón está realmente dentro del formulario
+    const botonesEnForm = formCliente.querySelectorAll('button');
+    console.log('Botones dentro del formulario:', botonesEnForm.length);
+    botonesEnForm.forEach((btn, index) => {
+      console.log(`Botón ${index + 1}:`, {
+        type: btn.type,
+        id: btn.id,
+        texto: btn.textContent.trim().substring(0, 20)
+      });
+    });
+  }
+  
+  if (btnGuardarId) {
+    console.log('Botón ID - deshabilitado:', btnGuardarId.disabled);
+    console.log('Botón ID - texto:', btnGuardarId.textContent.trim());
+    console.log('Botón ID - formulario padre:', btnGuardarId.closest('form')?.id);
+  }
+}
+
+// ============== FUNCIONES DE ANIMACIÓN MEJORADAS ==============
+
+// Inicializar animaciones de entrada para elementos de la página
+function initAnimacionesEntrada() {
+  // Animar welcome section
+  const welcomeSection = document.querySelector('.welcome-section');
+  if (welcomeSection) {
+    welcomeSection.style.opacity = '0';
+    welcomeSection.style.transform = 'translateY(-20px)';
+    setTimeout(() => {
+      welcomeSection.style.transition = 'all 0.6s ease';
+      welcomeSection.style.opacity = '1';
+      welcomeSection.style.transform = 'translateY(0)';
+    }, 100);
+  }
+
+  // Animar cards existentes con delay escalonado
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      card.style.transition = 'all 0.4s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 200 + (index * 100));
+  });
+}
+
+// Efecto de carga para el botón de guardar
+function mostrarCargandoBtn(btn, texto = 'Guardando...') {
+  btn.disabled = true;
+  const contenidoOriginal = btn.innerHTML;
+  btn.setAttribute('data-original-content', contenidoOriginal);
+  btn.innerHTML = `
+    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+    ${texto}
+  `;
+  btn.classList.add('btn-loading');
+}
+
+// Restaurar botón después de la carga
+function ocultarCargandoBtn(btn) {
+  btn.disabled = false;
+  const contenidoOriginal = btn.getAttribute('data-original-content');
+  if (contenidoOriginal) {
+    btn.innerHTML = contenidoOriginal;
+    btn.removeAttribute('data-original-content');
+  }
+  btn.classList.remove('btn-loading');
+}
+
+// Efecto de validación en tiempo real para inputs
+function initValidacionTiempoReal() {
+  const inputs = document.querySelectorAll('#formCliente .form-control');
+  inputs.forEach(input => {
+    input.addEventListener('input', function() {
+      // Remover clases de error previas
+      this.classList.remove('is-invalid');
+      const errorDiv = this.nextElementSibling;
+      if (errorDiv && errorDiv.classList.contains('invalid-feedback')) {
+        errorDiv.remove();
+      }
+      
+      // Agregar efecto visual de éxito si el campo está válido
+      if (this.value.trim().length > 0) {
+        this.classList.add('is-valid');
+        setTimeout(() => {
+          this.classList.remove('is-valid');
+        }, 1000);
+      }
+    });
+    
+    // Efecto de enfoque
+    input.addEventListener('focus', function() {
+      this.style.transform = 'scale(1.02)';
+      this.style.transition = 'transform 0.2s ease';
+    });
+    
+    input.addEventListener('blur', function() {
+      this.style.transform = 'scale(1)';
+    });
+  });
 }

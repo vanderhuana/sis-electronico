@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alertas | ElectroTech</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/electrotech-theme.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
+  <link rel="stylesheet" href="../assets/css/alertas.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+  
+  <!-- Main Content -->
+  <main style="margin-left: 240px; padding: 20px;">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-danger fw-bold animate-fade-in-up">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          Alertas de Stock
+        </h2>
+        <div class="badge bg-danger fs-6 animate-pulse" id="countAlert">
+          <i class="fas fa-bell me-1"></i>
+          <span id="alertCount">0</span> alertas
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card card-electrotech border-warning">
+            <div class="card-body">
+              <h6 class="card-title text-warning">
+                <i class="fas fa-filter me-2"></i>Filtros
+              </h6>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="stockMinimo" class="form-label">Stock mínimo:</label>
+                  <input type="number" class="form-control input-electrotech" id="stockMinimo" value="5" min="1">
+                </div>
+                <div class="col-md-6">
+                  <label for="buscarProducto" class="form-label">Buscar producto:</label>
+                  <input type="text" class="form-control input-electrotech" id="buscarProducto" placeholder="Nombre del producto...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-electrotech border-info">
+            <div class="card-body">
+              <h6 class="card-title text-info">
+                <i class="fas fa-info-circle me-2"></i>Resumen
+              </h6>
+              <div class="row text-center">
+                <div class="col-4">
+                  <div class="text-danger">
+                    <strong id="stockCritico">0</strong>
+                    <br><small>Crítico</small>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="text-warning">
+                    <strong id="stockBajo">0</strong>
+                    <br><small>Bajo</small>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="text-success">
+                    <strong id="stockNormal">0</strong>
+                    <br><small>Normal</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de Alertas -->
+      <div class="card">
+        <div class="card-header bg-danger text-white">
+          <h5 class="mb-0">
+            <i class="fas fa-list me-2"></i>
+            Productos con Stock Bajo
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="alertasContainer">
+            <div class="text-center py-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+              </div>
+              <p class="mt-2">Cargando alertas...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
+  
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/alertas.js"></script>
+</body>
+</html>

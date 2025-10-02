@@ -215,7 +215,16 @@ async function cargarProductos() {
       return `
       <div class="col-12 col-md-4 mb-3 d-flex justify-content-center">
         <div class="card h-100 shadow-sm ${borde} producto-animada" style="border-width:2px;max-width:320px;width:100%;">
-          ${imgSrc ? `<img src="${imgSrc}" class="card-img-top" style="max-height:100px;object-fit:cover;">` : ''}
+          ${imgSrc ? 
+            `<div class="product-image-container">
+               <img src="${imgSrc}" class="card-img-top" alt="${p.nombre}" loading="lazy">
+             </div>` : 
+            `<div class="product-image-container">
+               <div class="no-image-placeholder">
+                 <i class="fas fa-box"></i>
+               </div>
+             </div>`
+          }
           <div class="card-body p-2">
             <h6 class="card-title mb-1" style="font-size:1rem;">${p.nombre}</h6>
             <p class="card-text mb-1" style="font-size:0.9rem;">${p.descripcion || ''}</p>
@@ -293,7 +302,16 @@ function mostrarProductosFiltrados(filtro) {
     return `
     <div class="col-12 col-md-4 mb-3 d-flex justify-content-center">
       <div class="card h-100 shadow-sm ${borde} producto-animada" style="border-width:2px;max-width:320px;width:100%;">
-        ${imgSrc ? `<img src="${imgSrc}" class="card-img-top" style="max-height:100px;object-fit:cover;">` : ''}
+        ${imgSrc ? 
+          `<div class="product-image-container">
+             <img src="${imgSrc}" class="card-img-top" alt="${p.nombre}" loading="lazy">
+           </div>` : 
+          `<div class="product-image-container">
+             <div class="no-image-placeholder">
+               <i class="fas fa-box"></i>
+             </div>
+           </div>`
+        }
         <div class="card-body p-2">
           <h6 class="card-title mb-1" style="font-size:1rem;">${p.nombre}</h6>
           <p class="card-text mb-1" style="font-size:0.9rem;">${p.descripcion || ''}</p>
@@ -337,7 +355,16 @@ function mostrarProductosFiltrados(filtro) {
     return `
     <div class="col-12 col-md-4 mb-3 d-flex justify-content-center">
       <div class="card h-100 shadow-sm ${borde} producto-animada" style="border-width:2px;max-width:320px;width:100%;">
-        ${imgSrc ? `<img src="${imgSrc}" class="card-img-top" style="max-height:100px;object-fit:cover;">` : ''}
+        ${imgSrc ? 
+          `<div class="product-image-container">
+             <img src="${imgSrc}" class="card-img-top" alt="${p.nombre}" loading="lazy">
+           </div>` : 
+          `<div class="product-image-container">
+             <div class="no-image-placeholder">
+               <i class="fas fa-box"></i>
+             </div>
+           </div>`
+        }
         <div class="card-body p-2">
           <h6 class="card-title mb-1" style="font-size:1rem;">${p.nombre}</h6>
           <p class="card-text mb-1" style="font-size:0.9rem;">${p.descripcion || ''}</p>

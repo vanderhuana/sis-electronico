@@ -1,15 +1,14 @@
-<!D  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultas | ElectroTech</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">PE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consulta Rápida | ElectroTech</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/electrotech-theme.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/consulta.css">
 </head>
 <body>
@@ -19,20 +18,20 @@
   <!-- Contenido principal -->
   <main style="margin-left: 240px; padding: 20px;">
     <div class="container-fluid">
-      <h2 class="mb-4"><i class="fas fa-search me-2"></i>Consulta Rápida</h2>
+      <h2 class="mb-4 animate-fade-in-up"><i class="fas fa-search me-2 text-primary"></i>Consulta Rápida</h2>
       
       <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
-          <div class="card shadow">
+          <div class="card card-electrotech shadow-lg animate-fade-in-up">
             <div class="card-header bg-primary text-white">
-              <h5 class="mb-0"><i class="fas fa-search me-2"></i>Buscador Universal</h5>
+              <h5 class="mb-0 text-white"><i class="fas fa-search me-2"></i>Buscador Universal</h5>
             </div>
             <div class="card-body">
               <div class="mb-4">
                 <label for="inputBusqueda" class="form-label">Buscar clientes o productos:</label>
                 <div class="input-group">
-                  <span class="input-group-text"><i class="fas fa-search"></i></span>
-                  <input type="text" class="form-control" id="inputBusqueda" 
+                  <span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span>
+                  <input type="text" class="form-control input-electrotech" id="inputBusqueda" 
                          placeholder="Ingresa nombre, ID, SKU o cualquier término..." 
                          autocomplete="off">
                 </div>
@@ -46,10 +45,13 @@
         </div>
       </div>
     </div>
+    </div>
   </main>
 
+
+
   <!-- Toast Container -->
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

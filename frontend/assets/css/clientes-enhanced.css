@@ -1,0 +1,193 @@
+/* Estilos mejorados para el módulo de clientes - Headers oscuros con elementos verdes */
+
+/* Variables de colores - Header oscuro + elementos verdes */
+:root {
+  --header-dark: #203A43;
+  --header-mid: #2C5364;
+  --header-darker: #0F2027;
+  --primary-green: #198754;
+  --secondary-green: #20c997;
+  --accent-green: #28a745;
+  --light-green: #d1e7dd;
+  --dark-green: #0f5132;
+  --shadow-green: rgba(25, 135, 84, 0.25);
+}
+
+/* Efectos hover para el botón principal de clientes */
+.btn-main-cliente:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(25, 135, 84, 0.5) !important;
+}
+
+/* Efectos específicos para el modal con header oscuro */
+.modal-electrotech .modal-header {
+  transition: all 0.3s ease;
+}
+
+.modal-electrotech .modal-header:hover {
+  background: linear-gradient(135deg, #2C5364 0%, #203A43 50%, #0F2027 100%) !important;
+}
+
+/* Efectos específicos para campos de cliente */
+.cliente-section {
+  transition: all 0.3s ease;
+}
+
+.cliente-section:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Animaciones para campos de contacto */
+#email:focus {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%) !important;
+}
+
+#telefono:focus {
+  background: linear-gradient(135deg, #f0fff4 0%, #dcf5e1 100%) !important;
+}
+
+#direccion:focus {
+  background: linear-gradient(135deg, #fffbf0 0%, #fdf4dc 100%) !important;
+}
+
+/* Efecto para preview de información */
+.cliente-preview {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+  animation: slideInFromRight 0.5s ease;
+}
+
+@keyframes slideInFromRight {
+  0% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Estados de validación específicos para clientes */
+.cliente-valid {
+  border-color: #0d6efd !important;
+  background: linear-gradient(135deg, #e7f3ff 0%, #d4e7ff 100%) !important;
+}
+
+.cliente-invalid {
+  border-color: #dc3545 !important;
+  background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%) !important;
+  animation: shakeHorizontal 0.5s ease-in-out;
+}
+
+@keyframes shakeHorizontal {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Efectos para tarjetas de clientes en la lista */
+.cliente-card {
+  transition: all 0.3s ease;
+  border-radius: 15px !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+.cliente-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(13, 110, 253, 0.2) !important;
+}
+
+/* Iconos animados para información de contacto */
+.contact-icon {
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: rotate(15deg) scale(1.2);
+  color: #0d6efd !important;
+}
+
+/* Gradiente de estado para clientes activos/inactivos */
+.cliente-activo {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+}
+
+.cliente-inactivo {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+}
+
+/* Estilos mejorados para inputs y campos de texto */
+.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.input-electrotech:focus {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1) !important;
+  outline: none !important;
+}
+
+.input-electrotech::placeholder {
+  color: #6c757d !important;
+  opacity: 0.8 !important;
+}
+
+/* Textarea específico */
+textarea.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  resize: vertical !important;
+  min-height: 100px !important;
+}
+
+/* Select específico */
+select.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+}
+
+select.input-electrotech option {
+  background: #ffffff !important;
+  color: #212529 !important;
+}
+
+/* Responsive específico para módulo clientes */
+@media (max-width: 768px) {
+  .btn-main-cliente {
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+  }
+  
+  .cliente-section {
+    margin: 10px !important;
+    padding: 15px !important;
+  }
+}
+
+/* Efectos de carga para lista de clientes */
+.clientes-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

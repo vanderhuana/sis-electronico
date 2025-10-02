@@ -1,76 +1,343 @@
-/* Sidebar oscuro estilo sistema */
-.navbar {
-  background: #203A43 !important;
-  color: #fff;
-  border-radius: 0 16px 16px 0;
-}
-@media (max-width: 991px) {
-  .sidebar-productos {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    height: auto;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
+/* Dashboard moderno y elegante */
+
+/* Variables CSS para consistencia */
+:root {
+  --primary-color: #0d6efd;
+  --success-color: #198754;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+  --dark-color: #@media (max-width: 992px) {
+  main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  h2.text-primary {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
     margin-bottom: 1rem;
   }
+}ght-bg: #f8f9fa;
+  --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+  --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+  --shadow-heavy: 0 8px 30px rgba(0,0,0,0.15);
+  --border-radius: 1rem;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Layout principal */
 main {
-  padding-top: 24px;
-  min-width: 0;
-  transition: margin-left 0.3s;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 24px;
+  margin-left: 240px;
+  transition: var(--transition);
 }
-@media (min-width: 992px) {
-  main {
-    padding-left: 240px;
-  }
-}
-@media (max-width: 991px) {
-  main {
-    padding-left: 0;
-    padding-top: 8px;
-  }
-}
+
 .container-fluid {
-  max-width: 1000px;
-  min-width: 0;
-  overflow-x: auto;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.sidebar-custom .nav-link:last-child {
-  background: #203A43 !important;
-  color: #fff !important;
-  border-radius: 0.5rem;
-  font-weight: 600;
-}
-.card-header.rounded-top {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-.card {
-  /* Estructura original, sin ancho máximo ni overflow */
-}
-
-
-.card-body canvas {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 320px !important;
-  display: block;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-main {
-  margin-left: 240px;
-  padding-top: 24px;
+/* Título principal mejorado */
+h2.text-primary {
+  background: linear-gradient(45deg, var(--primary-color), #4dabf7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===============================
+   TARJETAS DE ESTADÍSTICAS
+   =============================== */
+
+.stat-card {
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* Gradientes de fondo para las tarjetas */
+.stat-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.stat-gradient-primary {
+  background: linear-gradient(90deg, var(--primary-color), #4dabf7);
+}
+
+.stat-gradient-success {
+  background: linear-gradient(90deg, var(--success-color), #51cf66);
+}
+
+.stat-gradient-warning {
+  background: linear-gradient(90deg, var(--warning-color), #ffd43b);
+}
+
+.stat-gradient-info {
+  background: linear-gradient(90deg, var(--info-color), #74c0fc);
+}
+
+/* Iconos en las tarjetas de estadísticas */
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  opacity: 0.1;
+  transition: var(--transition);
+}
+
+/* Icono centrado para la tarjeta de Ventas del Mes */
+.stat-icon-centered {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: linear-gradient(45deg, var(--primary-color), #4dabf7);
+  color: white;
+  opacity: 0.9;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.stat-card:hover .stat-icon {
+  opacity: 0.3;
+  transform: scale(1.1);
+}
+
+.stat-card .text-primary + .stat-icon {
+  background: linear-gradient(45deg, var(--primary-color), #4dabf7);
+  color: white;
+}
+
+.stat-card .text-success + .stat-icon {
+  background: linear-gradient(45deg, var(--success-color), #51cf66);
+  color: white;
+}
+
+.stat-card .text-warning + .stat-icon {
+  background: linear-gradient(45deg, var(--warning-color), #ffd43b);
+  color: white;
+}
+
+.stat-card .text-info + .stat-icon {
+  background: linear-gradient(45deg, var(--info-color), #74c0fc);
+  color: white;
+}
+
+/* ===============================
+   TARJETAS DE GRÁFICOS
+   =============================== */
+
+.chart-card {
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* Gradientes superiores para gráficos */
+.chart-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.chart-gradient-primary {
+  background: linear-gradient(90deg, var(--primary-color), #4dabf7, #91a7ff);
+}
+
+.chart-gradient-success {
+  background: linear-gradient(90deg, var(--success-color), #51cf66, #8ce99a);
+}
+
+/* Iconos en headers de gráficos */
+.chart-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0.2;
+  transition: var(--transition);
+}
+
+.chart-card:hover .chart-icon {
+  opacity: 0.4;
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Estilo del canvas de los gráficos */
+.card-body canvas {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 350px !important;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+}
+
+.chart-card:hover canvas {
+  filter: brightness(1.05);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+@media (max-width: 991px) {
+  main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  h2.text-primary {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
-  main {
-    margin-left: 0;
+  .container-fluid {
+    padding: 0.5rem;
   }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .chart-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .card-body canvas {
+    height: 280px !important;
+  }
+}
+
+/* ===============================
+   ANIMACIONES Y EFECTOS
+   =============================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card, .chart-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Efectos de carga */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+
+
+/* Espaciado removido - ahora se usa flexbox layout */
+
+/* Mejoras para la tarjeta de Ventas del Mes centrada */
+.stat-card .text-center {
+  min-height: 160px;
+}
+
+.stat-card:hover .stat-icon-centered {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}
+
+/* Variantes de colores para iconos centrados */
+.stat-icon-success {
+  background: linear-gradient(45deg, var(--success-color), #51cf66) !important;
+  box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3) !important;
+}
+
+.stat-icon-warning {
+  background: linear-gradient(45deg, var(--warning-color), #ffd43b) !important;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3) !important;
+}
+
+.stat-icon-info {
+  background: linear-gradient(45deg, var(--info-color), #74c0fc) !important;
+  box-shadow: 0 4px 15px rgba(13, 202, 240, 0.3) !important;
+}
+
+/* Efectos hover para cada tipo */
+.stat-card:hover .stat-icon-success {
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4) !important;
+}
+
+.stat-card:hover .stat-icon-warning {
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4) !important;
+}
+
+.stat-card:hover .stat-icon-info {
+  box-shadow: 0 6px 20px rgba(13, 202, 240, 0.4) !important;
 }

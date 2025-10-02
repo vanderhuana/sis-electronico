@@ -7,7 +7,11 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" type="image/svg+xml">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/electrotech-theme.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
   <link rel="stylesheet" href="../assets/css/ventas.css">
+  <link rel="stylesheet" href="../assets/css/ventas-enhanced.css">
+  <link rel="stylesheet" href="../assets/css/inputs-fix.css">
 </head>
 <body>
   <!-- Sidebar -->
@@ -16,85 +20,178 @@
   <!-- Main Content -->
   <main style="margin-left: 240px; padding: 20px;">
     <div class="container-fluid">
-      <h2 class="mb-4 text-primary fw-bold">Gestión de Ventas</h2>
+      <h2 class="mb-4 text-success fw-bold">Gestión de Ventas</h2>
       <div class="row g-4 justify-content-center">
         <div class="col-12 col-lg-7 d-flex flex-column align-items-center">
-          <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalVenta">Registrar nueva venta</button>
+          <div class="text-center mb-4">
+            <div class="d-inline-block p-3 rounded-circle mb-2" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); box-shadow: 0 8px 25px rgba(25, 135, 84, 0.3);">
+              <i class="fas fa-cash-register fa-lg text-white"></i>
+            </div>
+            <h5 class="text-success mb-1">Punto de Venta</h5>
+            <p class="text-muted mb-3 fs-6">Registra nuevas ventas de manera rápida y eficiente</p>
+            <button class="btn btn-success btn-electrotech animate-fade-in-up px-5 py-3 fs-5 shadow-lg btn-main-venta btn-gradient" 
+                    data-bs-toggle="modal" data-bs-target="#modalVenta"
+                    style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none; border-radius: 15px; box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4); transition: all 0.3s ease;">
+              <i class="fas fa-plus-circle me-2 pulse-icon"></i>Nueva Venta
+            </button>
+          </div>
         </div>
         <!-- Modal para registrar venta -->
         <div class="modal fade" id="modalVenta" tabindex="-1" aria-labelledby="modalVentaLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-4 shadow-lg border-0">
-              <div class="modal-header text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalVentaLabel">
-                  <i class="bi bi-cart-plus me-2"></i> Registrar nueva venta
-                </h5>
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content modal-electrotech border-0" style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(32, 58, 67, 0.3);">
+              <div class="modal-header" style="background: linear-gradient(135deg, #203A43 0%, #2C5364 50%, #0F2027 100%); padding: 25px; border: none;">
+                <div class="d-flex align-items-center">
+                  <div class="rounded-circle p-2 me-3" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                    <i class="fas fa-cart-plus fa-lg text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="modal-title fw-bold text-white mb-0" id="modalVentaLabel">Registrar Nueva Venta</h4>
+                    <small class="text-white-50">Complete la información de la venta</small>
+                  </div>
+                </div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body p-4">
-                <form id="formVenta">
+              <div class="modal-body p-0" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                <!-- Sección Cliente y Configuración -->
+                <div class="p-4 modal-section" style="background: white; margin: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                  <h6 class="text-primary mb-3 fw-bold">
+                    <i class="fas fa-user-circle me-2 pulse-icon"></i>Información del Cliente
+                  </h6>
+                  <form id="formVenta">
+                    <div class="row g-3">
+                      <div class="col-md-8">
+                        <label class="form-label fw-bold text-dark">Cliente <span class="text-danger">*</span></label>
+                        <div class="input-group shadow-sm">
+                          <span class="input-group-text" style="background: linear-gradient(135deg, #198754 0%, #157347 100%); border: none;">
+                            <i class="fas fa-user text-white"></i>
+                          </span>
+                          <select name="cliente_id" id="selectCliente" class="form-select input-electrotech" required style="border-left: none;">
+                            <option value="">Seleccionar cliente...</option>
+                          </select>
+                        </div>
+                        <div class="form-text">
+                          <i class="fas fa-info-circle me-1"></i>Selecciona el cliente para esta venta
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label fw-bold text-dark">Descuento (%)</label>
+                        <div class="input-group shadow-sm">
+                          <span class="input-group-text" style="background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); border: none;">
+                            <i class="fas fa-percent text-white"></i>
+                          </span>
+                          <input type="number" name="descuento" class="form-control input-electrotech" min="0" max="100" value="0" placeholder="0" style="border-left: none; text-align: center; color: #ffc107; font-weight: 600;">
+                        </div>
+                        <div class="form-text">
+                          <i class="fas fa-tag me-1"></i>Descuento aplicado
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
+                <!-- Sección Productos -->
+                <div class="p-4 mx-4 mb-3 modal-section" style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="text-primary mb-0 fw-bold">
+                      <i class="fas fa-shopping-cart me-2 pulse-icon"></i>Productos de la Venta
+                    </h6>
+                    <button type="button" class="btn btn-outline-success btn-electrotech btn-sm shadow-sm" id="btnAgregarProducto"
+                            style="border-radius: 10px; border: 2px solid #198754;">
+                      <i class="fas fa-plus-circle me-1"></i>Agregar Producto
+                    </button>
+                  </div>
+                  <div class="small text-muted mb-3">
+                    <i class="fas fa-info-circle me-1"></i>Selecciona los productos y cantidades para esta venta
+                  </div>
+                  <div id="productosVenta" style="max-height: 300px; overflow-y: auto;"></div>
+                </div>
+
+                <!-- Sección Pago y Total -->
+                <div class="p-4 mx-4 mb-3 modal-section" style="background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                  <h6 class="text-primary mb-3 fw-bold">
+                    <i class="fas fa-credit-card me-2 pulse-icon"></i>Información de Pago
+                  </h6>
                   <div class="row g-3">
                     <div class="col-md-6">
-                      <label class="form-label">Cliente</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-person"></i></span>
-                        <select name="cliente_id" id="selectCliente" class="form-select" required></select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Descuento</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-percent"></i></span>
-                        <input type="number" name="descuento" class="form-control" min="0" value="0">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <label class="form-label">Productos</label>
-                      <div id="productosVenta"></div>
-                      <button type="button" class="btn btn-outline-success btn-sm mt-2" id="btnAgregarProducto">Agregar producto</button>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Método de pago</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
-                        <select name="metodo_pago" class="form-select" required>
-                          <option value="Efectivo">Efectivo</option>
-                          <option value="Tarjeta">Tarjeta</option>
-                          <option value="Transferencia">Transferencia</option>
+                      <label class="form-label fw-bold text-dark">Método de pago <span class="text-danger">*</span></label>
+                      <div class="input-group shadow-sm">
+                        <span class="input-group-text" style="background: linear-gradient(135deg, #6f42c1 0%, #5a32a3 100%); border: none;">
+                          <i class="fas fa-credit-card text-white"></i>
+                        </span>
+                        <select name="metodo_pago" class="form-select input-electrotech" required style="border-left: none;">
+                          <option value="">Seleccionar método...</option>
+                          <option value="Efectivo">💵 Efectivo</option>
+                          <option value="Tarjeta">💳 Tarjeta</option>
+                          <option value="Transferencia">🏦 Transferencia</option>
                         </select>
                       </div>
+                      <div class="form-text">
+                        <i class="fas fa-money-bill-wave me-1"></i>Forma de pago utilizada
+                      </div>
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Total</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-cash-coin"></i></span>
-                        <input type="text" id="totalVenta" class="form-control" readonly>
+                      <label class="form-label fw-bold text-dark">Total de la venta</label>
+                      <div class="input-group shadow-sm">
+                        <span class="input-group-text" style="background: linear-gradient(135deg, #198754 0%, #157347 100%); border: none;">
+                          <i class="fas fa-dollar-sign text-white"></i>
+                        </span>
+                        <input type="text" id="totalVenta" class="form-control input-electrotech fs-5 fw-bold" 
+                               placeholder="$0.00" readonly style="border-left: none; background: #f8f9fa; color: #198754; text-align: right;">
+                      </div>
+                      <div class="form-text">
+                        <i class="fas fa-calculator me-1"></i>Total calculado automáticamente
                       </div>
                     </div>
                   </div>
-                  <div class="mt-4 d-flex justify-content-end gap-2">
-                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary px-4 fw-bold">Registrar venta</button>
+                </div>
+                
+                <!-- Botones de Acción -->
+                <div class="p-4" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 0 0 20px 20px;">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-muted small">
+                      <i class="fas fa-shield-alt me-1"></i>Información segura y encriptada
+                    </div>
+                    <div class="d-flex gap-3">
+                      <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal"
+                              style="border-radius: 12px; border: 2px solid #6c757d; font-weight: 500;">
+                        <i class="fas fa-times me-2"></i>Cancelar
+                      </button>
+                      <button type="submit" id="btnRegistrarVenta" class="btn px-5 py-2 fw-bold text-white shadow-lg" 
+                              style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none; border-radius: 12px; box-shadow: 0 8px 25px rgba(25, 135, 84, 0.4); transition: all 0.3s ease;">
+                        <i class="fas fa-check-circle me-2"></i>Registrar Venta
+                      </button>
+                    </div>
                   </div>
+                </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row mt-4 justify-content-center">
+      <div class="row mt-5 justify-content-center">
         <div class="col-12 col-lg-10">
-          <div class="card mb-4 w-100">
-            <div class="card-body">
-              <h4 class="mb-3">Historial de ventas</h4>
+          <div class="card historial-card mb-4 w-100 animate-fade-in-up">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-4">
+                <div class="rounded-circle p-3 me-3" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%);">
+                  <i class="fas fa-history fa-lg text-white"></i>
+                </div>
+                <div>
+                  <h4 class="text-success mb-1 fw-bold">Historial de Ventas</h4>
+                  <p class="text-muted mb-0">Registro completo de todas las transacciones</p>
+                </div>
+              </div>
               <div id="tablaVentas"></div>
             </div>
           </div>
         </div>
       </div>
-      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+      <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
     </div>
   </main>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/sidebar.js"></script>

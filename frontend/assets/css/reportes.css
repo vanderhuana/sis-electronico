@@ -1,18 +1,4 @@
 /* Estilos para Reportes con paleta Dashboard */
-.navbar {
-  background: #203A43 !important;
-  color: #fff;
-  border-radius: 0 16px 16px 0;
-}
-.navbar .nav-link, .navbar-brand {
-  color: #fff !important;
-  transition: background 0.2s, color 0.2s;
-}
-.navbar .nav-link.active {
-  background: rgba(255,255,255,0.18);
-  color: #fff !important;
-  border-radius: 8px;
-}
 main {
   padding-top: 24px;
   min-width: 0;

@@ -1,0 +1,322 @@
+/* Estilos mejorados para el módulo de inventario/productos - Headers oscuros con elementos verdes */
+
+/* Efectos hover para el botón principal de productos */
+.btn-main-producto:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(25, 135, 84, 0.5) !important;
+}
+
+/* Efectos específicos para el modal con header oscuro */
+.modal-electrotech .modal-header {
+  transition: all 0.3s ease;
+}
+
+.modal-electrotech .modal-header:hover {
+  background: linear-gradient(135deg, #2C5364 0%, #203A43 50%, #0F2027 100%) !important;
+}
+
+/* Efectos específicos para secciones del modal de productos */
+.producto-section {
+  transition: all 0.3s ease;
+}
+
+.producto-section:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Animaciones específicas para campos de precio */
+#precio_compra:focus, #precio_venta:focus {
+  background: linear-gradient(135deg, #f0fff4 0%, #dcf5e1 100%) !important;
+  animation: priceGlow 2s ease infinite;
+}
+
+@keyframes priceGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(25, 135, 84, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(25, 135, 84, 0.6); }
+}
+
+/* Efecto para campo de stock */
+#stock {
+  transition: all 0.3s ease;
+}
+
+#stock:focus {
+  background: linear-gradient(135deg, #e7f3ff 0%, #d4e7ff 100%) !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+}
+
+/* Indicador visual de stock bajo */
+.stock-bajo {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%) !important;
+  border-color: #ffc107 !important;
+  animation: stockWarning 2s ease infinite;
+}
+
+.stock-critico {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  border-color: #dc3545 !important;
+  animation: stockCritical 1s ease infinite;
+}
+
+@keyframes stockWarning {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes stockCritical {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+}
+
+/* Preview de imagen mejorado */
+#previewImagen {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#previewImagen:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
+
+/* Efecto de drop zone para subir imágenes */
+.image-drop-zone {
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.image-drop-zone:hover {
+  border-color: #fd7e14;
+  background: linear-gradient(135deg, #fff5f0 0%, #ffe5cc 100%);
+  transform: scale(1.02);
+}
+
+.image-drop-zone.dragover {
+  border-color: #198754;
+  background: linear-gradient(135deg, #f0fff4 0%, #dcf5e1 100%);
+  transform: scale(1.05);
+}
+
+/* Efectos para categorías */
+#categoria:focus {
+  background: linear-gradient(135deg, #fffbf0 0%, #fdf4dc 100%) !important;
+}
+
+/* Validación visual de precios */
+.precio-valido {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+  border-color: #198754 !important;
+}
+
+.precio-invalido {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  border-color: #dc3545 !important;
+  animation: shake 0.5s ease;
+}
+
+/* Calculadora de margen automática */
+.margin-calculator {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.margin-calculator.show {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  0% { 
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% { 
+    max-height: 100px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efectos para tarjetas de productos en la lista */
+.producto-card {
+  transition: all 0.3s ease;
+  border-radius: 15px !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+  overflow: hidden;
+}
+
+.producto-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(25, 135, 84, 0.2) !important;
+}
+
+/* Efectos para imagen del producto en la tarjeta */
+.producto-image {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.producto-image:hover {
+  transform: scale(1.1);
+}
+
+/* Indicadores de estado del producto */
+.producto-disponible {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+}
+
+.producto-agotado {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+}
+
+.producto-stock-bajo {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  color: #856404;
+}
+
+/* Botones de acción en productos */
+.btn-producto {
+  transition: all 0.3s ease;
+  border-radius: 8px !important;
+}
+
+.btn-producto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive para módulo productos */
+@media (max-width: 768px) {
+  .btn-main-producto {
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+  }
+  
+  .producto-section {
+    margin: 10px !important;
+    padding: 15px !important;
+  }
+  
+  .modal-xl .modal-dialog {
+    margin: 5px !important;
+  }
+}
+
+/* Efectos de carga para lista de productos */
+.productos-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+/* Filtros visuales para búsqueda */
+.filtro-activo {
+  background: linear-gradient(135deg, #198754 0%, #20c997 100%) !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+/* Efectos para estadísticas de inventario */
+.stat-inventario {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.stat-inventario:hover {
+  border-color: #198754;
+  box-shadow: 0 8px 25px rgba(25, 135, 84, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Animación de guardado exitoso */
+.producto-guardado {
+  animation: saveSuccess 1s ease;
+}
+
+@keyframes saveSuccess {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Estilos mejorados para inputs y campos de texto - Productos */
+.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.input-electrotech:focus {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1) !important;
+  outline: none !important;
+}
+
+.input-electrotech::placeholder {
+  color: #6c757d !important;
+  opacity: 0.8 !important;
+}
+
+/* Campos numéricos específicos para productos */
+input[type="number"].input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+
+input[type="number"].input-electrotech:focus {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+  font-weight: 700 !important;
+}
+
+/* Textarea específico para productos */
+textarea.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  resize: vertical !important;
+  min-height: 100px !important;
+}
+
+/* Select específico para productos */
+select.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+}
+
+select.input-electrotech option {
+  background: #ffffff !important;
+  color: #212529 !important;
+}

@@ -1,0 +1,105 @@
+/* Estilos globales para el sidebar con degradado */
+
+/* Sidebar principal con degradado */
+#sidebar-container .navbar {
+  background: linear-gradient(135deg, #203A43 0%, #2C5364 50%, #0F2027 100%) !important;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1) !important;
+  border-radius: 0 16px 16px 0 !important;
+}
+
+/* Marca/Logo del sidebar */
+#sidebar-container .navbar-brand {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 10px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+#sidebar-container .navbar-brand:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+/* Enlaces de navegación */
+#sidebar-container .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 2px 8px;
+  padding: 10px 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+#sidebar-container .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Estado activo simplificado */
+#sidebar-container .nav-link.active {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-left: 4px solid #ffffff;
+}
+
+/* Iconos en los enlaces */
+#sidebar-container .nav-link i {
+  width: 20px;
+  text-align: center;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+#sidebar-container .nav-link:hover i {
+  color: #ffffff;
+}
+
+#sidebar-container .nav-link.active i {
+  color: #ffffff;
+}
+
+/* Enlace de cerrar sesión (especial) */
+#sidebar-container .nav-link.text-warning {
+  background: rgba(255, 193, 7, 0.1) !important;
+  color: #ffc107 !important;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+#sidebar-container .nav-link.text-warning:hover {
+  background: rgba(255, 193, 7, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Información del usuario */
+#userInfo {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive para móviles */
+@media (max-width: 992px) {
+  #sidebar-container .navbar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  #sidebar-container .navbar.show {
+    transform: translateX(0);
+  }
+}
+
+/* Sin animaciones de carga */
+#sidebar-container .nav-link {
+  opacity: 1;
+}

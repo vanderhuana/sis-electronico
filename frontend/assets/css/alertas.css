@@ -1,0 +1,138 @@
+/* Estilos para la página de Alertas */
+
+body {
+  background-color: #f8f9fa;
+}
+
+main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+/* Cards de alertas */
+.alert-card {
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.alert-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.alert-critico {
+  border-left-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.alert-bajo {
+  border-left-color: #ffc107;
+  background-color: #fff3cd;
+}
+
+.alert-normal {
+  border-left-color: #198754;
+  background-color: #d1e7dd;
+}
+
+/* Badge de stock */
+.stock-badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.stock-critico {
+  background-color: #dc3545;
+  color: white;
+}
+
+.stock-bajo {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.stock-normal {
+  background-color: #198754;
+  color: white;
+}
+
+/* Iconos de estado */
+.icon-status {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.icon-critico {
+  color: #dc3545;
+}
+
+.icon-bajo {
+  color: #ffc107;
+}
+
+.icon-normal {
+  color: #198754;
+}
+
+/* Animaciones */
+@keyframes pulseRed {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.pulse-critical {
+  animation: pulseRed 2s infinite;
+}
+
+/* Cards responsivos */
+@media (max-width: 576px) {
+  .alert-card .card-body {
+    padding: 1rem 0.5rem;
+  }
+  
+  .icon-status {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  
+  .stock-badge {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Filtros */
+.card.border-warning {
+  border-width: 2px;
+}
+
+.card.border-info {
+  border-width: 2px;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}

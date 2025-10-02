@@ -1,0 +1,240 @@
+/* Estilos mejorados para el módulo de ventas */
+
+/* Efectos hover para el botón principal */
+.btn-main-venta:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(25, 135, 84, 0.5) !important;
+}
+
+/* Efectos para las secciones del modal */
+.modal-section {
+  transition: all 0.3s ease;
+}
+
+.modal-section:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Efectos para productos individuales */
+.producto-item {
+  transition: all 0.3s ease;
+}
+
+.producto-item:hover {
+  border-color: #0d6efd !important;
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+/* Efectos para inputs focus */
+.input-electrotech:focus {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+  transform: scale(1.02);
+}
+
+/* Animación para el total */
+#totalVenta {
+  transition: all 0.3s ease;
+  color: #198754 !important;
+  font-weight: 700 !important;
+  text-align: right !important;
+  font-size: 1.25rem !important;
+}
+
+#totalVenta.updated {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+  color: #0f5132 !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(25, 135, 84, 0.3) !important;
+}
+
+/* Efectos de carga para totales */
+.loading-total {
+  background: linear-gradient(90deg, #f8f9fa, #e9ecef, #f8f9fa) !important;
+  background-size: 200% 100%;
+  animation: loading-shimmer 1s infinite;
+}
+
+/* Estilos para subtotales de productos */
+.inputPrecioVenta {
+  color: #198754 !important;
+  font-weight: 600 !important;
+  text-align: right !important;
+  background: #f8f9fa !important;
+}
+
+.inputPrecioVenta:focus {
+  color: #0f5132 !important;
+  background: #d1e7dd !important;
+}
+
+/* Estilos para campo de descuento */
+input[name="descuento"] {
+  color: #e0a800 !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+input[name="descuento"]:focus {
+  color: #b8860b !important;
+  background: #fff3cd !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25) !important;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Animaciones de limpieza de formulario */
+.producto-saliendo {
+  transform: translateX(-100%) !important;
+  opacity: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.total-limpiando {
+  transform: scale(0.8) !important;
+  opacity: 0.5 !important;
+  transition: all 0.5s ease !important;
+}
+
+/* Estilos para toast de éxito mejorado */
+.toast.text-bg-success {
+  border-left: 5px solid #0f5132 !important;
+  animation: slideInRight 0.5s ease !important;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Efectos para botón de envío */
+button[type="submit"]:disabled {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important;
+  cursor: not-allowed !important;
+}
+
+/* Efectos para método de pago */
+select[name="metodo_pago"] option {
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Gradiente animado para botones */
+.btn-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efectos de pulso para iconos importantes */
+.pulse-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Indicador de carga para total */
+.loading-total {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-total::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Efectos para tarjetas de historial */
+.historial-card {
+  transition: all 0.3s ease;
+  border-radius: 15px !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+.historial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+/* Responsive mejoras */
+@media (max-width: 768px) {
+  .modal-xl {
+    margin: 10px;
+  }
+  
+  .modal-dialog {
+    max-width: calc(100vw - 20px);
+  }
+  
+  .btn-main-venta {
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+  }
+}
+
+/* Estados de validación mejorados */
+.is-valid {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25) !important;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Notificaciones toast mejoradas */
+.toast-container .toast {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+  color: #155724 !important;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+  color: #721c24 !important;
+}

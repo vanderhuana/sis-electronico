@@ -1,4 +1,40 @@
-/* Estilos base copiados de productos.css para clientes */
-@import url('productos.css');
+/* Estilos específicos para el módulo de clientes */
 
-/* Puedes agregar aquí estilos específicos para clientes si lo necesitas */
+/* Estilos para inputs en modales - Texto visible */
+.modal-body input, .modal-body textarea, .modal-body .input-group-text {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 10px !important;
+}
+
+.modal-body input:focus, .modal-body textarea:focus {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #198754 !important;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1) !important;
+}
+
+.modal-body select.form-select, .modal-body select.input-electrotech {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #dee2e6 !important;
+}
+
+.modal-body select.form-select:focus, .modal-body select.input-electrotech:focus {
+  background: #ffffff !important;
+  color: #212529 !important;
+  border: 2px solid #198754 !important;
+}
+
+/* Placeholders visibles */
+.modal-body input::placeholder, .modal-body textarea::placeholder {
+  color: #6c757d !important;
+  opacity: 0.8 !important;
+}
+
+/* Etiquetas visibles y legibles */
+.modal-body label, .modal-body .form-label {
+  color: #212529 !important;
+  font-weight: 600 !important;
+}
